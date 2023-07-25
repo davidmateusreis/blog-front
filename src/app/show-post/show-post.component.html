@@ -1,0 +1,11 @@
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+        <div class="card" style="padding: 20px; margin-top: 20px;" *ngFor="let post of posts; let i = index">
+            <h1>{{ post.postTitle }}</h1>
+            <p>{{ post.postContent }}</p>
+            <h6>Posted by {{ post.postAuthor }} at {{ post.createdAt }}</h6>
+            <a type="button" href="/app-show-post-details/{{post.postId}}"
+                class="btn btn-outline-primary rounded-0">Read More</a>
+        </div>
+    </div>
+</div>

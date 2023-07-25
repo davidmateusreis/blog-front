@@ -16,6 +16,12 @@ import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { RegisterComponent } from './register/register.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { PostService } from './_services/post.service';
+import { ShowPostComponent } from './show-post/show-post.component';
+import { FooterComponent } from './footer/footer.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +32,19 @@ import { RegisterComponent } from './register/register.component';
     ForbiddenComponent,
     UserComponent,
     AdminComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddPostComponent,
+    ShowPostComponent,
+    FooterComponent,
+    ShowPostDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    EditorModule
   ],
   providers: [
     AuthGuard,
@@ -42,7 +53,8 @@ import { RegisterComponent } from './register/register.component';
       useClass: AuthInterceptor,
       multi: true
     },
-    UserService
+    UserService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
