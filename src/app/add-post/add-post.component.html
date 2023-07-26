@@ -2,12 +2,17 @@
     <div class="card" style="padding: 20px;">
         <form #addPostForm="ngForm" (ngSubmit)="addPost(addPostForm)">
 
-            <input type="text" class="form-control mb-3" ngModel name="postAuthor" id="postAuthor" placeholder="Author">
+            <input type="text" class="form-control mb-3" [(ngModel)]="post.postAuthor" name="postAuthor" id="postAuthor"
+                placeholder="Author">
 
-            <input type="text" class="form-control mb-3" ngModel name="postTitle" id="postTitle"
+            <input type="text" class="form-control mb-3" [(ngModel)]="post.postTitle" name="postTitle" id="postTitle"
                 placeholder="Post Title">
 
-            <editor ngModel name="postContent" [init]="{ height: 400, menubar: false, plugins: 'link' }"></editor>
+            <input type="file" class="form-control mb-3" multiple value="select" #selectFile
+                (change)="onFileSelected($event)">
+
+            <editor [(ngModel)]="post.postContent
+            " name="postContent" [init]="{ height: 400, menubar: false, plugins: 'link' }"></editor>
 
             <button class="btn btn-outline-primary form-control rounded-0" style="margin-top: 20px;"
                 type="submit">Post</button>

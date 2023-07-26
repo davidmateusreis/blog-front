@@ -17,11 +17,8 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { RegisterComponent } from './register/register.component';
 import { AddPostComponent } from './add-post/add-post.component';
-import { PostService } from './_services/post.service';
-import { ShowPostComponent } from './show-post/show-post.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +31,7 @@ import { ShowPostDetailsComponent } from './show-post-details/show-post-details.
     AdminComponent,
     RegisterComponent,
     AddPostComponent,
-    ShowPostComponent,
     FooterComponent,
-    ShowPostDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +48,7 @@ import { ShowPostDetailsComponent } from './show-post-details/show-post-details.
       useClass: AuthInterceptor,
       multi: true
     },
-    UserService,
-    PostService
+    UserService
   ],
   bootstrap: [AppComponent]
 })

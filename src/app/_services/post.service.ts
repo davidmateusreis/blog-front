@@ -12,14 +12,6 @@ export class PostService {
   constructor(private httpClient: HttpClient) { }
 
   public addPost(post: FormData) {
-    return this.httpClient.post<Post>(this.API + "/posts", post);
-  }
-
-  public getAllPosts() {
-    return this.httpClient.get<Post[]>(this.API + "/posts");
-  }
-
-  public getPostById(postId: number) {
-    return this.httpClient.get<Post>(this.API + "/posts/" + postId);
+    return this.httpClient.post<Post>(this.API + "/addNewPost", post);
   }
 }

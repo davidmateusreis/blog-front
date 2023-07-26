@@ -1,8 +1,10 @@
+import { FileHandle } from "./file-handle.model";
+
 export interface Post {
-    postId: number,
     postAuthor: string,
     postTitle: string,
     postContent: string,
     createdAt: string,
-    updatedAt: string
+    updatedAt: string,
+    postImages: FileHandle[]
 }
