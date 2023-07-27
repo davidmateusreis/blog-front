@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-post-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     RegisterComponent,
     AddPostComponent,
     FooterComponent,
+    ShowAllPostDetailsComponent,
   ],
   imports: [
     BrowserModule,

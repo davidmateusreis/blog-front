@@ -14,4 +14,8 @@ export class PostService {
   public addPost(post: FormData) {
     return this.httpClient.post<Post>(this.API + "/addNewPost", post);
   }
+
+  public getAllPosts() {
+    return this.httpClient.get<Post[]>(this.API + "/getAllPosts");
+  }
 }

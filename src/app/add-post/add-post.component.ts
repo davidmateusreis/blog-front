@@ -5,6 +5,7 @@ import { FileHandle } from '../_model/file-handle.model';
 import { Post } from '../_model/post.model';
 import { PostService } from '../_services/post.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -25,6 +26,7 @@ export class AddPostComponent implements OnInit {
   constructor(
     private postService: PostService,
     private sanitizer: DomSanitizer,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,9 @@ export class AddPostComponent implements OnInit {
 
     this.postService.addPost(postFormData).subscribe(
       (response: Post) => {
+        console.log(response);
         addPostForm.reset();
+        this.router.navigate(['/']);
       },
       (error: HttpErrorResponse) => {
         console.log(error);
