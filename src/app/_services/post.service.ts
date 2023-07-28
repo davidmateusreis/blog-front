@@ -18,4 +18,8 @@ export class PostService {
   public getAllPosts() {
     return this.httpClient.get<Post[]>(this.API + "/getAllPosts");
   }
+
+  public deletePost(postId: string) {
+    return this.httpClient.delete(this.API + "/deletePostDetails/" + postId);
+  }
 }

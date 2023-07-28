@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class AddPostComponent implements OnInit {
 
   post: Post = {
+    postId: "",
     postAuthor: "",
     postTitle: "",
     postContent: "",

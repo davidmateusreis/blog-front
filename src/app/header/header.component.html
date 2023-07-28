@@ -22,8 +22,8 @@
             *ngIf="userService.roleMatch(['User'])">Dashboard</a>
         </li>
       </ul>
-      <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
-      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+      <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success rounded-0" routerLink="/login">Login</button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger rounded-0" (click)="logout()">Logout</button>
     </div>
   </div>
 </nav>

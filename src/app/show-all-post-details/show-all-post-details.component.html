@@ -1,6 +1,7 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
-        <table class="table table-striped">
+
+        <table class="table table-striped, text-center">
             <thead>
                 <tr>
                     <th scope="col">Author</th>
@@ -8,6 +9,8 @@
                     <th scope="col">Content</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Updated At</th>
+                    <th scope="col">Images</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,9 +20,39 @@
                     <td>{{post.postContent}}</td>
                     <td>{{post.createdAt}}</td>
                     <td>{{post.updatedAt}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success rounded-0" (click)="showImages(post)"
+                            data-bs-toggle="modal" data-bs-target="#imagesModal">Images</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary rounded-0"
+                            style="margin-right: 4%;">Edit</button>
+                        <button type="button" class="btn btn-outline-danger rounded-0" style="margin-right: 4%;"
+                            (click)="deletePost(post.postId)">Delete</button>
+                    </td>
                 </tr>
                 <tr>
             </tbody>
         </table>
+
+        <div *ngFor="let post of postDetails; let i = index" class="modal fade" id="imagesModal" tabindex="-1"
+            aria-labelledby="imagesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="imagesModalLabel">Post Images</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card" [src]="post.postImages[0].url" alt=""
+                            style="width:30%;height:30%;padding: 2%;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
