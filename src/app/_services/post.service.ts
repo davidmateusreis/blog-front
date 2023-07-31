@@ -22,4 +22,8 @@ export class PostService {
   public deletePost(postId: string) {
     return this.httpClient.delete(this.API + "/deletePostDetails/" + postId);
   }
+
+  public getPostDetailsById(postId: string) {
+    return this.httpClient.get<Post>(this.API + "/getPostDetailsById/" + postId);
+  }
 }

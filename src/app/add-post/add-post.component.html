@@ -14,8 +14,11 @@
             <editor [(ngModel)]="post.postContent
             " name="postContent" [init]="{ height: 400, menubar: false, plugins: 'link' }"></editor>
 
-            <button class="btn btn-outline-primary form-control rounded-0" style="margin-top: 20px;"
+            <button *ngIf="isNewPost" class="btn btn-outline-primary form-control rounded-0" style="margin-top: 20px;"
                 type="submit">Post</button>
+            <button *ngIf="!isNewPost" class="btn btn-outline-primary form-control rounded-0" style="margin-top: 20px;"
+                type="submit">Update</button>
         </form>
     </div>
 </div>
+<app-footer></app-footer>

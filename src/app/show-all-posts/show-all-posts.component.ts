@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../_model/post.model';
 import { PostService } from '../_services/post.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ImageProcessingService } from '../_services/image-processing.service';
 import { map } from 'rxjs';
+import { Post } from '../_model/post.model';
+import { ImageProcessingService } from '../_services/image-processing.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-show-all-post-details',
-  templateUrl: './show-all-post-details.component.html',
-  styleUrls: ['./show-all-post-details.component.scss']
+  selector: 'app-show-all-posts',
+  templateUrl: './show-all-posts.component.html',
+  styleUrls: ['./show-all-posts.component.scss']
 })
-export class ShowAllPostDetailsComponent implements OnInit {
+export class ShowAllPostsComponent implements OnInit {
 
   postDetails: Post[] = [];
 
@@ -41,20 +41,7 @@ export class ShowAllPostDetailsComponent implements OnInit {
       );
   }
 
-  deletePost(postId: string) {
-    this.postService.deletePost(postId).subscribe(
-      (response) => {
-        console.log(response);
-        this.getAllPosts();
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
-  }
-
-  editPost(postId: string) {
-    console.log(postId);
-    this.router.navigate(['/add-post', { postId: postId }]);
+  public showPostDetails(postId: string) {
+    this.router.navigate(['/show-post-details', { postId: postId }]);
   }
 }

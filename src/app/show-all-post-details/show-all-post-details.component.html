@@ -1,9 +1,10 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
 
-        <table class="table table-striped, text-center">
+        <table class="table table-striped text-center">
             <thead>
                 <tr>
+                    <th scope="col">Id</th>
                     <th scope="col">Author</th>
                     <th scope="col">Title</th>
                     <th scope="col">Content</th>
@@ -15,18 +16,19 @@
             </thead>
             <tbody>
                 <tr *ngFor="let post of postDetails; let i = index">
+                    <td>{{post.postId}}</td>
                     <td>{{post.postAuthor}}</td>
                     <td>{{post.postTitle}}</td>
                     <td>{{post.postContent}}</td>
                     <td>{{post.createdAt}}</td>
                     <td>{{post.updatedAt}}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-success rounded-0" (click)="showImages(post)"
-                            data-bs-toggle="modal" data-bs-target="#imagesModal">Images</button>
+                        <button type="button" class="btn btn-outline-success rounded-0" data-bs-toggle="modal"
+                            data-bs-target="#imagesModal">Images</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary rounded-0"
-                            style="margin-right: 4%;">Edit</button>
+                        <button type="button" class="btn btn-outline-primary rounded-0" style="margin-right: 4%;"
+                            (click)="editPost(post.postId)">Edit</button>
                         <button type="button" class="btn btn-outline-danger rounded-0" style="margin-right: 4%;"
                             (click)="deletePost(post.postId)">Delete</button>
                     </td>
@@ -56,3 +58,4 @@
 
     </div>
 </div>
+<app-footer></app-footer>

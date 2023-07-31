@@ -9,6 +9,8 @@ import { AuthGuard } from './_auth/auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-post-details.component';
+import { PostResolveService } from './_services/post-resolve.service';
+import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,8 +19,9 @@ const routes: Routes = [
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
-  { path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
-  { path: 'show-all-post-details', component: ShowAllPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } }
+  { path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } },
+  { path: 'show-all-post-details', component: ShowAllPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
+  { path: 'show-post-details', component: ShowPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } }
 ];
 
 @NgModule({

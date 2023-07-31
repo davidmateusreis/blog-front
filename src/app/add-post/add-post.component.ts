@@ -5,7 +5,7 @@ import { FileHandle } from '../_model/file-handle.model';
 import { Post } from '../_model/post.model';
 import { PostService } from '../_services/post.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent implements OnInit {
+
+  isNewPost = true;
 
   post: Post = {
     postId: "",
@@ -27,10 +29,16 @@ export class AddPostComponent implements OnInit {
   constructor(
     private postService: PostService,
     private sanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.post = this.activatedRoute.snapshot.data['post'];
+
+    if (this.post && this.post.postId) {
+      this.isNewPost = false;
+    }
   }
 
   addPost(addPostForm: NgForm) {
