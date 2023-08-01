@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ShowAllPostsComponent implements OnInit {
 
+  page: number = 1;
+  total: number = 0;
+
   postDetails: Post[] = [];
 
   constructor(
@@ -26,7 +29,7 @@ export class ShowAllPostsComponent implements OnInit {
   }
 
   public getAllPosts() {
-    this.postService.getAllPosts()
+    this.postService.getAllPosts(this.page)
       .pipe(
         map((allPosts: Post[], i) => allPosts.map((post: Post) => this.imageProcessingService.createImages(post)))
       )
@@ -43,5 +46,10 @@ export class ShowAllPostsComponent implements OnInit {
 
   public showPostDetails(postId: string) {
     this.router.navigate(['/show-post-details', { postId: postId }]);
+  }
+
+  public pageChangeEvent(event: number) {
+    this.page = event;
+    this.getAllPosts();
   }
 }

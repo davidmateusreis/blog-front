@@ -15,8 +15,8 @@ export class PostService {
     return this.httpClient.post<Post>(this.API + "/addNewPost", post);
   }
 
-  public getAllPosts() {
-    return this.httpClient.get<Post[]>(this.API + "/getAllPosts");
+  public getAllPosts(page: number) {
+    return this.httpClient.get<Post[]>(this.API + "/getAllPosts/?page=" + page);
   }
 
   public deletePost(postId: string) {

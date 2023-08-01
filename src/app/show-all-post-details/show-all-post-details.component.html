@@ -15,7 +15,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let post of postDetails; let i = index">
+                <tr
+                    *ngFor="let post of postDetails | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total } let i = index">
                     <td>{{post.postId}}</td>
                     <td>{{post.postAuthor}}</td>
                     <td>{{post.postTitle}}</td>
@@ -57,5 +58,8 @@
         </div>
 
     </div>
+</div>
+<div class="container mt-5 text-center">
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
 </div>
 <app-footer></app-footer>

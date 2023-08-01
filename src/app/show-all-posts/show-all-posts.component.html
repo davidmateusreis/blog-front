@@ -1,7 +1,8 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
         <div class="row row-cols-3">
-            <div class="col" style="padding: 20px;" *ngFor="let post of postDetails; let i = index">
+            <div class="col" style="padding: 20px;"
+                *ngFor="let post of postDetails | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total } let i = index">
                 <div class="row">
                     <img style="max-width: 100%" [src]="post.postImages[0].url" alt=""
                         (click)="showPostDetails(post.postId)">
@@ -15,4 +16,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container mt-5 text-center">
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
 </div>

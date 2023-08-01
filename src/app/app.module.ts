@@ -22,6 +22,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-post-details.component';
 import { ShowAllPostsComponent } from './show-all-posts/show-all-posts.component';
 import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ShowPostDetailsComponent } from './show-post-details/show-post-details.
     FooterComponent,
     ShowAllPostDetailsComponent,
     ShowAllPostsComponent,
-    ShowPostDetailsComponent,
+    ShowPostDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,8 @@ import { ShowPostDetailsComponent } from './show-post-details/show-post-details.
     FormsModule,
     HttpClientModule,
     RouterModule,
-    EditorModule
+    EditorModule,
+    NgxPaginationModule
   ],
   providers: [
     AuthGuard,
