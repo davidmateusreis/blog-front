@@ -28,8 +28,8 @@ export class ShowAllPostsComponent implements OnInit {
     this.getAllPosts();
   }
 
-  public getAllPosts() {
-    this.postService.getAllPosts(this.page)
+  public getAllPosts(searchKey: string = "") {
+    this.postService.getAllPosts(this.page, searchKey)
       .pipe(
         map((allPosts: Post[], i) => allPosts.map((post: Post) => this.imageProcessingService.createImages(post)))
       )
@@ -51,5 +51,11 @@ export class ShowAllPostsComponent implements OnInit {
   public pageChangeEvent(event: number) {
     this.page = event;
     this.getAllPosts();
+  }
+
+  searchByKeyword(searchkeyword: any) {
+    console.log(searchkeyword);
+    this.postDetails = [];
+    this.getAllPosts(searchkeyword);
   }
 }
