@@ -10,7 +10,7 @@
     <div class="card" style="padding: 20px;">
         <div class="row row-cols-3">
             <div class="col" style="padding: 20px;"
-                *ngFor="let post of postDetails | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total } let i = index">
+                *ngFor="let post of postDetails | slice: (page-1) * pageSize : page * pageSize let i = index">
                 <div class="row">
                     <img style="max-width: 100%" [src]="post.postImages[0].url" alt=""
                         (click)="showPostDetails(post.postId)">
@@ -25,6 +25,10 @@
         </div>
     </div>
 </div>
-<div class="container mt-5 text-center">
-    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
+<div class="container mt-5 justify-content-center">
+    <ngb-pagination [(page)]="page" [pageSize]="9" [collectionSize]="postDetails.length">
+        <ng-template ngbPaginationPrevious>Previous</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+    </ngb-pagination>
 </div>

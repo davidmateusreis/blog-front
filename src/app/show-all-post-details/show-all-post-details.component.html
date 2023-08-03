@@ -23,8 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr
-                    *ngFor="let post of postDetails | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total } let i = index">
+                <tr *ngFor="let post of postDetails | slice: (page-1) * pageSize : page * pageSize let i = index">
                     <td>{{post.postId}}</td>
                     <td>{{post.postAuthor}}</td>
                     <td>{{post.postTitle}}</td>
@@ -67,7 +66,11 @@
 
     </div>
 </div>
-<div class="container mt-5 text-center">
-    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
+<div class="container mt-5 justify-content-center">
+    <ngb-pagination [(page)]="page" [pageSize]="9" [collectionSize]="postDetails.length">
+        <ng-template ngbPaginationPrevious>Previous</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+    </ngb-pagination>
 </div>
 <app-footer></app-footer>
