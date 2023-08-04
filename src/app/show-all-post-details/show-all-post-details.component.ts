@@ -58,7 +58,7 @@ export class ShowAllPostDetailsComponent implements OnInit {
 
   editPost(postId: string) {
     console.log(postId);
-    this.router.navigate(['/add-post', { postId: postId }]);
+    this.router.navigate(['/new-post', { postId: postId }]);
   }
 
   searchByKeyword(searchkeyword: any) {

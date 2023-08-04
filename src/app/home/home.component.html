@@ -1,2 +1,35 @@
-<app-show-all-posts></app-show-all-posts>
+<div class="container mt-5">
+    <form class="d-flex" role="search">
+        <input class="form-control me-2 rounded-0" type="search" name="searchKey" id="searchKey" placeholder="Search"
+            #searchkeyword (keyup)="searchByKeyword(searchkeyword.value)">
+        <button class="btn btn-success rounded-0" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+        <div class="row row-cols-3">
+            <div class="col" style="padding: 20px;"
+                *ngFor="let post of postDetails | slice: (page-1) * pageSize : page * pageSize let i = index">
+                <div class="row">
+                    <img style="max-width: 100%" [src]="post.postImages[0].url" alt=""
+                        (click)="showPostDetails(post.postId)">
+                    <div class="mt-3">
+                        <h2>{{ post.postTitle }}</h2>
+                    </div>
+                    <div class="mt-2">
+                        <h6>Posted by {{ post.postAuthor }} at {{ post.createdAt }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 justify-content-center">
+    <ngb-pagination [(page)]="page" [pageSize]="9" [collectionSize]="postDetails.length">
+        <ng-template ngbPaginationPrevious>Previous</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+    </ngb-pagination>
+</div>
 <app-footer></app-footer>

@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
-  { path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } },
-  { path: 'show-all-post-details', component: ShowAllPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
-  { path: 'show-post-details', component: ShowPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } }
+  { path: 'new-post', component: AddPostComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } },
+  { path: 'manage-posts', component: ShowAllPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
+  { path: 'show-post', component: ShowPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } }
 ];
 
 @NgModule({

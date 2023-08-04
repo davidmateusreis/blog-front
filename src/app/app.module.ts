@@ -20,7 +20,6 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-post-details.component';
-import { ShowAllPostsComponent } from './show-all-posts/show-all-posts.component';
 import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -37,7 +36,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddPostComponent,
     FooterComponent,
     ShowAllPostDetailsComponent,
-    ShowAllPostsComponent,
     ShowPostDetailsComponent
   ],
   imports: [
