@@ -8,7 +8,8 @@
             <p>{{ post.postContent }}</p>
         </div>
         <div class="mt-2">
-            <h6>Posted by {{ post.postAuthor }} at {{ post.createdAt }} and updated at {{ post.updatedAt }}</h6>
+            <h6>Posted by {{ post.postAuthor }} {{ post.createdAt | dateAsAgo }} and updated {{ post.updatedAt |
+                dateAsAgo }}</h6>
         </div>
     </div>
 </div>

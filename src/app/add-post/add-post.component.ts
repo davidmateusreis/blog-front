@@ -21,8 +21,8 @@ export class AddPostComponent implements OnInit {
     postAuthor: "",
     postTitle: "",
     postContent: "",
-    createdAt: "",
-    updatedAt: "",
+    createdAt: new Date,
+    updatedAt: new Date,
     postImages: []
   }
 

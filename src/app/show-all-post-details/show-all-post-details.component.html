@@ -28,8 +28,8 @@
                     <td>{{post.postAuthor}}</td>
                     <td>{{post.postTitle}}</td>
                     <td>{{post.postContent}}</td>
-                    <td>{{post.createdAt}}</td>
-                    <td>{{post.updatedAt}}</td>
+                    <td>{{post.createdAt | dateAsAgo }}</td>
+                    <td>{{post.updatedAt | dateAsAgo }}</td>
                     <td>
                         <button type="button" class="btn btn-outline-success rounded-0" data-bs-toggle="modal"
                             data-bs-target="#imagesModal">Images</button>

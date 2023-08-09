@@ -22,6 +22,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-post-details.component';
 import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DateAsAgoPipe } from './shared/date-as-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddPostComponent,
     FooterComponent,
     ShowAllPostDetailsComponent,
-    ShowPostDetailsComponent
+    ShowPostDetailsComponent,
+    DateAsAgoPipe
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     },
     UserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    DateAsAgoPipe
+  ]
 })
 export class AppModule { }

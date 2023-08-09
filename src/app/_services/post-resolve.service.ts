@@ -34,8 +34,8 @@ export class PostResolveService implements Resolve<Post> {
       postAuthor: "",
       postTitle: "",
       postContent: "",
-      createdAt: "",
-      updatedAt: "",
+      createdAt: new Date,
+      updatedAt: new Date,
       postImages: []
     }
   }

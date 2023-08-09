@@ -5,7 +5,7 @@ export interface Post {
     postAuthor: string,
     postTitle: string,
     postContent: string,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: Date,
+    updatedAt: Date,
     postImages: FileHandle[]
 }

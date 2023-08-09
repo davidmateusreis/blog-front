@@ -18,7 +18,7 @@
                         <h2>{{ post.postTitle }}</h2>
                     </div>
                     <div class="mt-2">
-                        <h6>Posted by {{ post.postAuthor }} at {{ post.createdAt }}</h6>
+                        <h6>Posted by {{ post.postAuthor }} {{ post.createdAt | dateAsAgo }}</h6>
                     </div>
                 </div>
             </div>
