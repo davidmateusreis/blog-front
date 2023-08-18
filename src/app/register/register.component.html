@@ -1,24 +1,83 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
-        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <form [formGroup]="registerForm" id="registerForm" (ngSubmit)="register(registerForm)">
 
-            <input type="text" class="form-control mb-3" ngModel name="userName" id="userName" placeholder="Username">
+            <div>
+                <input type="text" class="form-control mb-3" formControlName="userName" id="userName"
+                    placeholder="Username" name="userName"
+                    [ngClass]="{'is-invalid':submitted && registerForm.get('userName')?.errors, 'is-valid':registerForm.get('userName')?.valid}"
+                    required>
+                <div *ngIf="registerForm.get('userName')?.hasError('required')" class="invalid-feedback">Please enter
+                    your username</div>
+                <div *ngIf="registerForm.get('userName')?.hasError('minlength')" class="invalid-feedback">The username
+                    should be a least 4 characters</div>
+                <div *ngIf="registerForm.get('userName')?.valid" class="valid-feedback">This username is valid</div>
+            </div>
 
-            <input type="text" class="form-control mb-3" ngModel name="userFirstName" id="userFirstName"
-                placeholder="First Name">
+            <div>
+                <input type="text" class="form-control mb-3" formControlName="userFirstName" id="userFirstName"
+                    placeholder="First Name" name="userFirstName"
+                    [ngClass]="{'is-invalid':submitted && registerForm.get('userFirstName')?.errors, 'is-valid':registerForm.get('userFirstName')?.valid}"
+                    required>
+                <div *ngIf="registerForm.get('userFirstName')?.hasError('required')" class="invalid-feedback">Please
+                    enter
+                    your First Name</div>
+                <div *ngIf="registerForm.get('userFirstName')?.hasError('minlength')" class="invalid-feedback">The First
+                    Name
+                    should be a least 4 characters</div>
+                <div *ngIf="registerForm.get('userFirstName')?.valid" class="valid-feedback">This First Name is valid
+                </div>
+            </div>
 
-            <input type="text" class="form-control mb-3" ngModel name="userLastName" id="userLastName"
-                placeholder="Last Name">
+            <div>
+                <input type="text" class="form-control mb-3" formControlName="userLastName" id="userLastName"
+                    placeholder="Last Name" name="userLastName"
+                    [ngClass]="{'is-invalid':submitted && registerForm.get('userLastName')?.errors, 'is-valid':registerForm.get('userLastName')?.valid}"
+                    required>
+                <div *ngIf="registerForm.get('userLastName')?.hasError('required')" class="invalid-feedback">Please
+                    enter
+                    your Last Name</div>
+                <div *ngIf="registerForm.get('userLastName')?.hasError('minlength')" class="invalid-feedback">The Last
+                    Name
+                    should be a least 4 characters</div>
+                <div *ngIf="registerForm.get('userLastName')?.valid" class="valid-feedback">This Last Name is valid
+                </div>
+            </div>
 
-            <input type="text" class="form-control mb-3" ngModel name="userEmail" id="userEmail" placeholder="Email">
+            <div>
+                <input type="text" class="form-control mb-3" formControlName="userEmail" id="userEmail"
+                    placeholder="Email" name="userEmail"
+                    [ngClass]="{'is-invalid':submitted && registerForm.get('userEmail')?.errors, 'is-valid':registerForm.get('userEmail')?.valid}"
+                    required>
+                <div *ngIf="registerForm.get('userEmail')?.hasError('required')" class="invalid-feedback">Please
+                    enter
+                    your Email</div>
+                <div *ngIf="registerForm.get('userEmail')?.hasError('email')" class="invalid-feedback">The Email
+                    should be a valid Email</div>
+                <div *ngIf="registerForm.get('userEmail')?.valid" class="valid-feedback">This Email is valid
+                </div>
+            </div>
 
-            <input type="password" class="form-control mb-3" ngModel name="userPassword" id="userPassword"
-                placeholder="Password">
+            <div>
+                <input type="password" class="form-control mb-3" formControlName="userPassword" id="userPassword"
+                    placeholder="Password" name="userPassword"
+                    [ngClass]="{'is-invalid':submitted && registerForm.get('userPassword')?.errors, 'is-valid':registerForm.get('userPassword')?.valid}"
+                    required>
+                <div *ngIf="registerForm.get('userPassword')?.hasError('required')" class="invalid-feedback">Please
+                    enter
+                    your Password</div>
+                <div *ngIf="registerForm.get('userPassword')?.hasError('minlength')" class="invalid-feedback">The
+                    Password should be a least 4 characters</div>
+                <div *ngIf="registerForm.get('userPassword')?.valid" class="valid-feedback">This Password is valid
+                </div>
+            </div>
 
-            <button class="btn btn-outline-primary form-control rounded-0" type="submit">Register</button>
         </form>
         <div>
-            <br>
+            <button type="submit" form="registerForm"
+                class="btn btn-outline-primary form-control mb-3 rounded-0">Register</button>
+        </div>
+        <div>
             <button class="btn btn-outline-primary form-control rounded-0" routerLink="/login">Back</button>
         </div>
     </div>

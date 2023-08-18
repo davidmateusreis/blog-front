@@ -1,24 +1,82 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
-        <form #addPostForm="ngForm" (ngSubmit)="addPost(addPostForm)">
+        <form [formGroup]="addPostForm" id="addPostForm" (ngSubmit)="addPost(addPostForm)">
 
-            <input type="text" class="form-control mb-3" [(ngModel)]="post.postAuthor" name="postAuthor" id="postAuthor"
-                placeholder="Author">
+            <div>
+                <input type="text" class="form-control mb-3" [(ngModel)]="post.postAuthor" formControlName="postAuthor"
+                    name="postAuthor" id="postAuthor" placeholder="Author"
+                    [ngClass]="{'is-invalid':submitted && addPostForm.get('postAuthor')?.errors, 'is-valid':addPostForm.get('postAuthor')?.valid}"
+                    required>
+                <div *ngIf="addPostForm.get('postAuthor')?.hasError('required')" class="invalid-feedback">Please enter
+                    the author name</div>
+                <div *ngIf="addPostForm.get('postAuthor')?.hasError('minlength')" class="invalid-feedback">The author
+                    name
+                    should be a least 4 characters</div>
+                <div *ngIf="addPostForm.get('postAuthor')?.valid" class="valid-feedback">This author is valid</div>
+            </div>
 
-            <input type="text" class="form-control mb-3" [(ngModel)]="post.postTitle" name="postTitle" id="postTitle"
-                placeholder="Post Title">
+            <div>
+                <input type="text" class="form-control mb-3" [(ngModel)]="post.postTitle" formControlName="postTitle"
+                    name="postTitle" id="postTitle" placeholder="Post Title"
+                    [ngClass]="{'is-invalid':submitted && addPostForm.get('postTitle')?.errors, 'is-valid':addPostForm.get('postTitle')?.valid}"
+                    required>
+                <div *ngIf="addPostForm.get('postTitle')?.hasError('required')" class="invalid-feedback">Please enter
+                    the title</div>
+                <div *ngIf="addPostForm.get('postTitle')?.hasError('minlength')" class="invalid-feedback">The title
+                    should be a least 10 characters</div>
+                <div *ngIf="addPostForm.get('postTitle')?.valid" class="valid-feedback">This title is valid</div>
+            </div>
 
-            <input type="file" class="form-control mb-3" multiple value="select" #selectFile
-                (change)="onFileSelected($event)">
+            <div>
+                <input type="file" class="form-control mb-3" formControlName="postImages"
+                    name="postImages" multiple value="select" #selectFile (change)="onFileSelected($event)"
+                    [ngClass]="{'is-invalid':submitted && addPostForm.get('postImages')?.errors, 'is-valid':addPostForm.get('postImages')?.valid}"
+                    required>
+                <div *ngIf="addPostForm.get('postImages')?.hasError('required')" class="invalid-feedback">A JPG image is
+                    required</div>
+                <div *ngIf="addPostForm.get('postImages')?.valid" class="valid-feedback">This image is valid</div>
+            </div>
 
-            <editor [(ngModel)]="post.postContent
-            " name="postContent" [init]="{ height: 400, menubar: false, plugins: 'link' }"></editor>
+            <div>
+                <div class="row row-cols-3">
+                    <div class="col" *ngFor="let file of post.postImages; let i = index;">
+                        <div class="mb-3">
+                            <img class="card mb-3" [src]="file.url" style="width:100%;height:100%;padding: 4%;">
+                            <button class="btn btn-danger rounded-0" (click)="removeImages(i)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <button *ngIf="isNewPost" class="btn btn-outline-primary form-control rounded-0" style="margin-top: 20px;"
-                type="submit">Post</button>
-            <button *ngIf="!isNewPost" class="btn btn-outline-primary form-control rounded-0" style="margin-top: 20px;"
-                type="submit">Update</button>
+            <div>
+                <textarea type="text" class="form-control mb-3" [(ngModel)]="post.postContent"
+                    formControlName="postContent" name="postContent" id="postContent" placeholder="Post Content"
+                    rows="16"
+                    [ngClass]="{'is-invalid':submitted && addPostForm.get('postContent')?.errors, 'is-valid':addPostForm.get('postContent')?.valid}"
+                    required></textarea>
+                <div *ngIf="addPostForm.get('postContent')?.hasError('required')" class="invalid-feedback">Please enter
+                    the post content</div>
+                <div *ngIf="addPostForm.get('postContent')?.hasError('minlength')" class="invalid-feedback">The post
+                    content
+                    should be a least 4 characters</div>
+                <div *ngIf="addPostForm.get('postContent')?.valid" class="valid-feedback">This content is valid</div>
+            </div>
+
         </form>
+
+        <div>
+            <button form="addPostForm" *ngIf="isNewPost" class="btn btn-outline-primary form-control mt-3 rounded-0"
+                type="submit">Post</button>
+        </div>
+        <div>
+            <button form="addPostForm" *ngIf="!isNewPost" class="btn btn-outline-primary form-control mt-3 rounded-0"
+                type="submit">Update</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary form-control mt-3 rounded-0"
+                routerLink="/manage-posts">Cancel</button>
+        </div>
+
     </div>
 </div>
 <app-footer></app-footer>

@@ -1,18 +1,40 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <form [formGroup]="loginForm" id="loginForm" (ngSubmit)="login(loginForm)">
 
-            <input type="text" class="form-control mb-3" ngModel name="userName" id="userName"
-                placeholder="Enter your username">
+            <div>
+                <input type="text" class="form-control mb-3" formControlName="userName" id="userName"
+                    placeholder="Enter your username"
+                    [ngClass]="{'is-invalid':submitted && loginForm.get('userName')?.errors, 'is-valid':loginForm.get('userName')?.valid}"
+                    required>
+                <div *ngIf="loginForm.get('userName')?.hasError('required')" class="invalid-feedback">Please enter
+                    your username</div>
+                <div *ngIf="loginForm.get('userName')?.hasError('minlength')" class="invalid-feedback">The username
+                    should be a least 4 characters</div>
+                <div *ngIf="loginForm.get('userName')?.valid" class="valid-feedback">This username is valid</div>
+            </div>
 
-            <input type="password" class="form-control mb-3" ngModel name="userPassword" id="userPassword"
-                placeholder="Enter your password">
+            <div>
+                <input type="password" class="form-control mb-3" formControlName="userPassword" id="userPassword"
+                    placeholder="Enter your password"
+                    [ngClass]="{'is-invalid':submitted && loginForm.get('userPassword')?.errors, 'is-valid':loginForm.get('userPassword')?.valid}"
+                    required>
+                <div *ngIf="loginForm.get('userPassword')?.hasError('required')" class="invalid-feedback">Please
+                    enter
+                    your Password</div>
+                <div *ngIf="loginForm.get('userPassword')?.hasError('minlength')" class="invalid-feedback">The
+                    Password should be a least 4 characters</div>
+                <div *ngIf="loginForm.get('userPassword')?.valid" class="valid-feedback">This Password is valid
+                </div>
+            </div>
 
-            <input type="submit" class="btn btn-outline-primary form-control rounded-0" value="Login">
         </form>
         <div>
-            <br>
-            <button class="btn btn-outline-primary form-control rounded-0" (click)="registerUser()">Create an
+            <button type="submit" form="loginForm"
+                class="btn btn-outline-primary form-control mb-3 rounded-0">Login</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary form-control rounded-0" routerLink="/register">Create an
                 account</button>
         </div>
     </div>
