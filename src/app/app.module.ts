@@ -23,6 +23,7 @@ import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-po
 import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DateAsAgoPipe } from './shared/date-as-ago.pipe';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DateAsAgoPipe } from './shared/date-as-ago.pipe';
     FooterComponent,
     ShowAllPostDetailsComponent,
     ShowPostDetailsComponent,
-    DateAsAgoPipe
+    DateAsAgoPipe,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { ShowAllPostDetailsComponent } from './show-all-post-details/show-all-post-details.component';
 import { PostResolveService } from './_services/post-resolve.service';
 import { ShowPostDetailsComponent } from './show-post-details/show-post-details.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
   { path: 'new-post', component: AddPostComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } },
   { path: 'manage-posts', component: ShowAllPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
-  { path: 'show-post', component: ShowPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } }
+  { path: 'show-post', component: ShowPostDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }, resolve: { post: PostResolveService } },
+  { path: 'contact', component: ContactComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,57 @@
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+
+        <form [formGroup]="contactForm" id="contactForm" (ngSubmit)="sendMessage(contactForm)">
+
+            <div>
+                <input type="text" class="form-control mb-3" formControlName="messageAuthor" id="messageAuthor"
+                    placeholder="Name" name="messageAuthor"
+                    [ngClass]="{'is-invalid':submitted && contactForm.get('messageAuthor')?.errors, 'is-valid':contactForm.get('messageAuthor')?.valid}"
+                    required>
+                <div *ngIf="contactForm.get('messageAuthor')?.hasError('required')" class="invalid-feedback">Please
+                    enter
+                    your name</div>
+                <div *ngIf="contactForm.get('messageAuthor')?.hasError('minlength')" class="invalid-feedback">The name
+                    should be a least 4 characters</div>
+                <div *ngIf="contactForm.get('messageAuthor')?.valid" class="valid-feedback">This name is valid</div>
+            </div>
+
+            <div>
+                <input type="email" class="form-control mb-3" formControlName="messageEmail" id="messageEmail"
+                    placeholder="Email" name="messageEmail"
+                    [ngClass]="{'is-invalid':submitted && contactForm.get('messageEmail')?.errors, 'is-valid':contactForm.get('messageEmail')?.valid}"
+                    required>
+                <div *ngIf="contactForm.get('messageEmail')?.hasError('required')" class="invalid-feedback">Please enter
+                    your email</div>
+                <div *ngIf="contactForm.get('messageEmail')?.hasError('email')" class="invalid-feedback">This email is
+                    invalid
+                </div>
+                <div *ngIf="contactForm.get('messageEmail')?.valid" class="valid-feedback">This email is valid</div>
+            </div>
+
+            <div>
+                <textarea type="text" class="form-control mb-3" formControlName="messageContent" id="messageContent"
+                    placeholder="Message" name="messageContent" rows="16"
+                    [ngClass]="{'is-invalid':submitted && contactForm.get('messageContent')?.errors, 'is-valid':contactForm.get('messageContent')?.valid}"
+                    required></textarea>
+                <div *ngIf="contactForm.get('messageContent')?.hasError('required')" class="invalid-feedback">Please
+                    enter your
+                    message</div>
+                <div *ngIf="contactForm.get('messageContent')?.hasError('minlength')" class="invalid-feedback">The
+                    message
+                    should be a least 4 characters</div>
+                <div *ngIf="contactForm.get('messageContent')?.valid" class="valid-feedback">This message is valid</div>
+            </div>
+
+            <div>
+                <button type="submit" form="contactForm"
+                    class="btn btn-outline-primary form-control mb-3 rounded-0">Send</button>
+            </div>
+            <div>
+                <button class="btn btn-outline-primary form-control rounded-0" routerLink="/">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>
